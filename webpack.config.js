@@ -1,13 +1,20 @@
 const path = require('path');
 const HtmlWebPackPlugin = require("html-webpack-plugin");
-const config = require("./config/config");
+const config = require("./config");
 const webpack = require('webpack');
+const IS_DEV = process.env.NODE_ENV === "development";
 
 let HTMLPlugins = [];
 config.HTMLDirs.forEach(page => {
   const htmlPlugin = new HtmlWebPackPlugin({
     filename: `${page}.html`,
-    template: `./src/page/${page}.html`//path.resolve(__dirname, )
+    template: `./src/page/${page}.html`, //path.resolve(__dirname, )
+    favicon: path.resolve(__dirname, "./src/public/images/jinding.png"), //在网页窗口栏上加上图标
+    minify: !IS_DEV && {
+      collapseWhitespace: true, //清楚空格、换行符
+      preserveLineBreaks: true, //保留换行符
+      removeComments: true //清理html中的注释
+    }
   });
   HTMLPlugins.push(htmlPlugin);
   // Entries[page] = path.resolve(__dirname, `./src/js/${page}.js`);
@@ -60,7 +67,7 @@ module.exports = {
       }]
     }]
   },
-  plugins: [ ...HTMLPlugins,
+  plugins: [...HTMLPlugins,
     // new HtmlWebPackPlugin({
     //   template: "./src/page/index.html",
     //   filename: "./index.html"

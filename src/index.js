@@ -1,14 +1,16 @@
 import printMe from './js/print.js';;
 
 console.log("module:", module);
+console.log("process:",process.env.NODE_ENV);
+
 if (module.hot) {
   module.hot.accept('./js/print.js', function() {
-    console.log('Accepting the updated printMe module!');
+    // console.log('Accepting the updated printMe module!');
     printMe();
   })
 }
 (() => {
-  for (let i = 0; i < 4; i++) {
+  for (let i = 0; i < 7; i++) {
     console.log(i) // 0 1 2
   }
 })()
