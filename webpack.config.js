@@ -25,7 +25,8 @@ module.exports = {
   entry: path.join(__dirname, './src/index.js'), //入口,要使用webpack打包那个文件。
   output: { //输出文件的配置
     path: path.join(__dirname, './dist'), //指定到那个目录中去
-    filename: "index.bundle.js" //指定输出文件的名称
+    // filename: "index.bundle.js", //指定输出文件的名称
+    filename: IS_DEV ? "[name].[hash:8].js" : "[name].[chunkhash:8].js",//后者需要注释掉plugins中的HotModuleReplacementPlugin
     // publicPath: "/"
   },
   devServer: {
