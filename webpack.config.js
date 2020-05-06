@@ -9,7 +9,8 @@ module.exports = {
     filename: "index.bundle.js" //指定输出文件的名称
   },
   devServer: {
-    contentBase: path.join(__dirname, '../src'),
+    contentBase: path.join(__dirname, './src'),//本地服务器所加载的页面所在的目录
+    hot:true
   },
   module: {
     rules: [{
