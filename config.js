@@ -1,4 +1,4 @@
-const HTMLDirs = ['index', 'a'];
+const HTMLDirs = ['index', 'print'];
 module.exports = {
   HTMLDirs,
 };
