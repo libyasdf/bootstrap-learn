@@ -8,7 +8,7 @@ if (module.hot) {
   })
 }
 (() => {
-  for (let i = 0; i < 3; i++) {
+  for (let i = 0; i < 4; i++) {
     console.log(i) // 0 1 2
   }
 })()
